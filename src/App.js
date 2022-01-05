@@ -1,24 +1,45 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState, useEffect, useRef } from "react";
+import "./App.css";
 
 function App() {
+  const [timerSeconds, setTimerSeconds] = useState("00");
+
+  let interval = useRef();
+
+  const startTimer = () => {
+    const countdownDate = new Date("April 22, 2022 00:00:00").getTime();
+
+    interval = setInterval(() => {
+      const now = new Date().getTime();
+      const distance = countdownDate - now;
+
+      const seconds = Math.floor(distance / 1000);
+
+      if (distance > 0) {
+        setTimerSeconds(seconds);
+      } else {
+        clearInterval(interval.current);
+      }
+    }, 1000);
+  };
+
+  useEffect(() => {
+    startTimer();
+  });
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <section className="timer-container">
+      <section className="timer">
+        <div>
+          <h2>
+            Earth Day
+            <br />
+          </h2>
+          Countdown In Seconds
+          <p>{timerSeconds}</p>
+        </div>
+      </section>
+    </section>
   );
 }
 
