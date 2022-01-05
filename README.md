@@ -1,6 +1,6 @@
 # Countdown App
 
-This is a simple countdown application in seconds for the Earth Day in 2022 [Live version](https://earth-day-countdown.netlify.app/).
+This is a simple countdown application in seconds for the Earth Day in 2022.<br/> [Live version](https://earth-day-countdown.netlify.app/).
 
 Completed by using:
 
